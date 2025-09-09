@@ -1,0 +1,16 @@
+{
+  "name": "animated-cta",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0",
+    "@wordpress/env": "^10.0.0"
+  },
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:reset": "wp-env destroy && wp-env start"
+  }
+}

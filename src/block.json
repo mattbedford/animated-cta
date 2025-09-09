@@ -1,0 +1,27 @@
+{
+  "apiVersion": 3,
+  "name": "frequenze/animated-cta",
+  "title": "Animated CTA",
+  "category": "design",
+  "icon": "index-card",
+  "description": "Two-column CTA with animated expanding accent background on scroll.",
+  "attributes": {
+    "mediaURL": { "type": "string", "default": "" },
+    "mediaAlt": { "type": "string", "default": "" },
+    "headline": { "type": "string", "default": "Scopri il nostro shop" },
+    "body": { "type": "string", "source": "html", "selector": "p", "default": "Testo descrittivo." },
+    "linkURL": { "type": "string", "default": "#" },
+    "linkText": { "type": "string", "default": "Scopri" },
+    "reverse": { "type": "boolean", "default": false },
+    "accent": { "type": "string", "default": "var(--accent)" },
+    "maxWidth": { "type": "number", "default": 1300 }
+  },
+  "supports": {
+    "spacing": { "padding": true, "margin": true },
+    "align": [ "wide", "full" ]
+  },
+  "style": "file:./style.css",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "keywords": ["cta","two column","animated"]
+}
