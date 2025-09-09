@@ -20,7 +20,7 @@
     "spacing": { "padding": true, "margin": true },
     "align": [ "wide", "full" ]
   },
-  "style": "file:./style.css",
+  "style": "file:./style-index.css",
   "editorScript": "file:./index.js",
   "viewScript": "file:./view.js",
   "keywords": ["cta","two column","animated"]

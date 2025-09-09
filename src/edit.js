@@ -41,16 +41,16 @@ export default function Edit({ attributes, setAttributes }) {
             </InspectorControls>
 
             <section className={[
-                'montage-section',
+                'animated-section',
                 reverse ? 'is-reversed' : ''
             ].join(' ')}
                      data-accent={accent}
-                     style={{ '--montage-max': `${maxWidth}px` }}
+                     style={{ '--animated-max': `${maxWidth}px` }}
             >
-                <div className="montage-bg" aria-hidden="true"></div>
+                <div className="animated-bg" aria-hidden="true"></div>
 
-                <div className="montage-flex">
-                    <div className="montage-media">
+                <div className="animated-flex">
+                    <div className="animated-media">
                         <MediaUpload
                             onSelect={(m)=>setAttributes({ mediaURL: m.url, mediaAlt: m.alt || '' })}
                             allowedTypes={['image']}
@@ -67,7 +67,7 @@ export default function Edit({ attributes, setAttributes }) {
                         />
                     </div>
 
-                    <div className="montage-content">
+                    <div className="animated-content">
                         <RichText
                             tagName="h2"
                             value={headline}
@@ -81,7 +81,7 @@ export default function Edit({ attributes, setAttributes }) {
                             onChange={(v)=>setAttributes({ body: v })}
                             placeholder={__('Testo…','frequenze')}
                         />
-                        <div className="montage-actions">
+                        <div className="animated-actions">
                             <URLInputButton
                                 url={linkURL}
                                 onChange={(url)=>setAttributes({ linkURL: url })}

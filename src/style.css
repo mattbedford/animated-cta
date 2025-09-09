@@ -1,64 +1,69 @@
-.montage-section {
+.animated-section {
     position: relative;
     overflow-x: hidden;
     padding: 4rem 0;
     min-height: 400px;
     --accent: var(--accent, #ff7a00);
-    --montage-max: 1300px;
+    --animated-max: 1300px;
 }
 
-.montage-section .montage-bg {
+.animated-section .animated-bg {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scaleX(0);
     transform-origin: center;
-    width: min(85vw, var(--montage-max));
+    width: min(85vw, var(--animated-max));
     height: 400px;
     background: var(--accent);
-    border-radius: 4px;
+    border-radius: 5px;
     z-index: 0;
     transition: transform 1s ease-out;
     box-shadow: 0 0 0 50px var(--accent);
     border: 1px solid #fff;
 }
 
-.montage-section.is-animated .montage-bg {
+.animated-section.is-animated .animated-bg {
     transform: translate(-50%, -50%) scaleX(1);
 }
 
 /* Flex wrapper */
-.montage-flex {
+.animated-flex {
     position: relative;
     z-index: 1;
     display: flex;
     gap: 2rem;
-    max-width: var(--montage-max);
+    max-width: var(--animated-max);
     margin: 0 auto;
     align-items: center;
     padding: 0 1rem;
 }
-
-.montage-media, .montage-content {
-    flex: 1 1 0;
+.animated-media {
+    text-align: center;
+}
+.animated-media, .animated-content {
+    flex: 1 1 35%;
 }
 
-.montage-media img {
+.animated-media img {
     width: 100%;
     height: auto;
     max-height: 350px;
     object-fit: cover;
-    border-radius: 4px;
-    transition: transform 0.6s ease;
+    border-radius: 6px;
+    opacity:.3;
+    transform: scale(0.7);
+    transition: transform 800ms cubic-bezier(.22,1.2,.36,1), opacity 300ms ease-out;
 }
 
-.montage-section.is-animated .montage-media img {
-    transform: scale(1.05);
+.animated-section.is-animated .animated-media img {
+    transform: scale(.95);
+    opacity: 1;
 }
 
-.montage-content h2 { margin: 0 0 .5rem; }
-.montage-content p { margin: 0 0 1rem; }
-.montage-content .btn {
+.animated-content h2 { margin: 0 0 .5rem; }
+.animated-content p { margin: 0 0 1rem; }
+.animated-content .btn {
     display: inline-block;
     padding: .6rem 1rem;
     border-radius: 6px;
@@ -68,17 +73,92 @@
 }
 
 /* Reverse layout */
-.montage-section.is-reversed .montage-flex { flex-direction: row-reverse; }
+.animated-section.is-reversed .animated-flex { flex-direction: row-reverse; }
 
 /* Mobile */
 @media (max-width: 800px) {
-    .montage-flex { flex-direction: column; }
+    .animated-flex { flex-direction: column; }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .montage-section .montage-bg,
-    .montage-media img {
+    .animated-section .animated-bg,
+    .animated-media img {
         transition: none !important;
+    }
+}
+
+
+
+.animated-flex {
+    align-items:center;
+    justify-content:center;
+    min-height:500px;
+    max-width: 90%;
+}
+.animated-content {
+    flex: 1 1 55%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+
+}
+.animated-media {
+    flex: 1 1 35%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+}
+.animated-media img {
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity:.3;
+    transform: scale(0.7);
+    transition: transform 800ms cubic-bezier(.22,1.2,.36,1), opacity 300ms ease-out;
+}
+.animated-section .animated-bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scaleX(0);
+    transform-origin: center;
+    width: min(85vw, var(--animated-max));
+    height: 400px;
+    background: var(--accent);
+    border-radius: 5px;
+    z-index: 0;
+    transition: transform 1s ease-out;
+    box-shadow: 0 0 0 30px var(--accent);
+    border: 1px solid #fff;
+}
+
+@media screen and (max-width:800px) {
+    .animated-flex {
+        display:block;
+        min-height:unset;
+    }
+    .animated-section .animated-bg {
+
+        height:800px;
+        width:100%;
+        box-shadow:none;
+        border:none;
+    }
+    .animated-section.is-animated {
+        height:850px;
+    }
+    .animated-media,
+    .animated-content {
+        flex:0 1 100% !important;
+    }
+    .animated-media img {
+        min-height:unset;
+        height:200px;
+        width:100%;
+        max-width:unset;
     }
 }

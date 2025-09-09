@@ -1,6 +1,6 @@
 // front-end behavior; runs only when the block is present
 (function(){
-    const sections = document.querySelectorAll('.montage-section');
+    const sections = document.querySelectorAll('.animated-section');
     if (!sections.length) return;
 
     // Apply picked accent
