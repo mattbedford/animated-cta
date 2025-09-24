@@ -1,13 +1,31 @@
 import { __ } from '@wordpress/i18n';
-import { MediaUpload, RichText, InspectorControls, URLInputButton } from '@wordpress/block-editor';
+import { InnerBlocks, InspectorControls, MediaUpload } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, ColorPalette, RangeControl, Button, TextControl } from '@wordpress/components';
 
 const ACCENT_CHOICES = [
     '#ff7a00', '#f97316', '#ef4444', '#22c55e', '#06b6d4', '#6366f1'
 ];
 
+const CONTENT_TEMPLATE = [
+    ['generateblocks/headline', {
+        element: 'h2',
+        content: 'Scopri il nostro shop'
+    }],
+    ['generateblocks/text', {
+        content: 'Testo descrittivo che spiega cosa offriamo.'
+    }],
+    ['generateblocks/button', {
+        text: 'Scopri',
+        url: '#'
+    }]
+];
+
+const MEDIA_TEMPLATE = [
+    ['generateblocks/image', {}]
+];
+
 export default function Edit({ attributes, setAttributes }) {
-    const { mediaURL, mediaAlt, headline, body, linkURL, linkText, reverse, accent, maxWidth } = attributes;
+    const { mediaURL, mediaAlt, reverse, accent, maxWidth } = attributes;
 
     return (
         <>
@@ -51,48 +69,28 @@ export default function Edit({ attributes, setAttributes }) {
 
                 <div className="animated-flex">
                     <div className="animated-media">
-                        <MediaUpload
-                            onSelect={(m)=>setAttributes({ mediaURL: m.url, mediaAlt: m.alt || '' })}
-                            allowedTypes={['image']}
-                            render={({ open }) => (
-                                mediaURL ? (
-                                    <div className="media-wrap" onClick={open} role="button" tabIndex={0} onKeyDown={(e)=>e.key==='Enter'&&open()}>
-                                        <img src={mediaURL} alt={mediaAlt || ''} />
-                                        <div className="change-overlay">{__('Change image','frequenze')}</div>
-                                    </div>
-                                ) : (
-                                    <Button variant="primary" onClick={open}>{__('Select image','frequenze')}</Button>
-                                )
-                            )}
+                        <InnerBlocks
+                            template={MEDIA_TEMPLATE}
+                            templateLock="all"
+                            allowedBlocks={[
+                                'generateblocks/image',
+                                'core/image'
+                            ]}
                         />
                     </div>
 
                     <div className="animated-content">
-                        <RichText
-                            tagName="h2"
-                            value={headline}
-                            onChange={(v)=>setAttributes({ headline: v })}
-                            placeholder={__('Titolo…','frequenze')}
-                            allowedFormats={[]}
+                        <InnerBlocks
+                            template={CONTENT_TEMPLATE}
+                            allowedBlocks={[
+                                'generateblocks/headline',
+                                'generateblocks/text',
+                                'generateblocks/button',
+                                'core/heading',
+                                'core/paragraph',
+                                'core/button'
+                            ]}
                         />
-                        <RichText
-                            tagName="p"
-                            value={body}
-                            onChange={(v)=>setAttributes({ body: v })}
-                            placeholder={__('Testo…','frequenze')}
-                        />
-                        <div className="animated-actions">
-                            <URLInputButton
-                                url={linkURL}
-                                onChange={(url)=>setAttributes({ linkURL: url })}
-                            />
-                            <TextControl
-                                label={__('Link text','frequenze')}
-                                value={linkText}
-                                onChange={(v)=>setAttributes({ linkText: v })}
-                            />
-                        </div>
-                        <a className="btn" href={linkURL || '#'}>{linkText || __('Scopri','frequenze')}</a>
                     </div>
                 </div>
             </section>

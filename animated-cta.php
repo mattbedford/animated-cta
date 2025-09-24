@@ -3,7 +3,7 @@
  * Plugin Name: Animated CTA Block
  * Description: Reusable two-column CTA with animated expanding background.
  * Author: Matt Bedford
- * Version: 1.0.0
+ * Version: 2.0.0
  */
 
 if ( ! defined('ABSPATH') ) exit;

@@ -4,17 +4,11 @@
   "title": "Animated CTA",
   "category": "design",
   "icon": "index-card",
-  "description": "Two-column CTA with animated expanding accent background on scroll.",
+  "description": "Two-column CTA with animated expanding accent background on scroll. Supports GenerateBlocks and core blocks.",
   "attributes": {
-    "mediaURL": { "type": "string", "default": "" },
-    "mediaAlt": { "type": "string", "default": "" },
-    "headline": { "type": "string", "default": "Scopri il nostro shop" },
-    "body": { "type": "string", "source": "html", "selector": "p", "default": "Testo descrittivo." },
-    "linkURL": { "type": "string", "default": "#" },
-    "linkText": { "type": "string", "default": "Scopri" },
     "reverse": { "type": "boolean", "default": false },
-    "accent": { "type": "string", "default": "var(--accent)" },
-    "maxWidth": { "type": "number", "default": 1300 }
+    "accent": { "type": "string", "default": "#ff7a00" },
+    "maxWidth": { "type": "number", "default": 1320 }
   },
   "supports": {
     "spacing": { "padding": true, "margin": true },
@@ -23,5 +17,5 @@
   "style": "file:./style-index.css",
   "editorScript": "file:./index.js",
   "viewScript": "file:./view.js",
-  "keywords": ["cta","two column","animated"]
+  "keywords": ["cta","two column","animated","generateblocks"]
 }
