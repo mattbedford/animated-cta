@@ -12,13 +12,7 @@ export default function save({ attributes }) {
             <div className="animated-bg" aria-hidden="true"></div>
 
             <div className="animated-flex">
-                <div className="animated-media">
-                    <InnerBlocks.Content />
-                </div>
-
-                <div className="animated-content">
-                    <InnerBlocks.Content />
-                </div>
+                <InnerBlocks.Content />
             </div>
         </section>
     );

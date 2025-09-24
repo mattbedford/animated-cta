@@ -6,22 +6,27 @@ const ACCENT_CHOICES = [
     '#ff7a00', '#f97316', '#ef4444', '#22c55e', '#06b6d4', '#6366f1'
 ];
 
-const CONTENT_TEMPLATE = [
-    ['generateblocks/headline', {
-        element: 'h2',
-        content: 'Scopri il nostro shop'
-    }],
-    ['generateblocks/text', {
-        content: 'Testo descrittivo che spiega cosa offriamo.'
-    }],
-    ['generateblocks/button', {
-        text: 'Scopri',
-        url: '#'
-    }]
-];
-
-const MEDIA_TEMPLATE = [
-    ['generateblocks/image', {}]
+const TEMPLATE = [
+    ['generateblocks/container', {}, [
+        ['generateblocks/grid', { columns: 2 }, [
+            ['generateblocks/container', {}, [
+                ['generateblocks/image', {}]
+            ]],
+            ['generateblocks/container', {}, [
+                ['generateblocks/headline', {
+                    element: 'h2',
+                    content: 'Scopri il nostro shop'
+                }],
+                ['generateblocks/text', {
+                    content: 'Testo descrittivo che spiega cosa offriamo.'
+                }],
+                ['generateblocks/button', {
+                    text: 'Scopri',
+                    url: '#'
+                }]
+            ]]
+        ]]
+    ]]
 ];
 
 export default function Edit({ attributes, setAttributes }) {
@@ -68,30 +73,21 @@ export default function Edit({ attributes, setAttributes }) {
                 <div className="animated-bg" aria-hidden="true"></div>
 
                 <div className="animated-flex">
-                    <div className="animated-media">
-                        <InnerBlocks
-                            template={MEDIA_TEMPLATE}
-                            templateLock="all"
-                            allowedBlocks={[
-                                'generateblocks/image',
-                                'core/image'
-                            ]}
-                        />
-                    </div>
-
-                    <div className="animated-content">
-                        <InnerBlocks
-                            template={CONTENT_TEMPLATE}
-                            allowedBlocks={[
-                                'generateblocks/headline',
-                                'generateblocks/text',
-                                'generateblocks/button',
-                                'core/heading',
-                                'core/paragraph',
-                                'core/button'
-                            ]}
-                        />
-                    </div>
+                    <InnerBlocks
+                        template={TEMPLATE}
+                        allowedBlocks={[
+                            'generateblocks/container',
+                            'generateblocks/grid',
+                            'generateblocks/headline',
+                            'generateblocks/text',
+                            'generateblocks/button',
+                            'generateblocks/image',
+                            'core/heading',
+                            'core/paragraph',
+                            'core/button',
+                            'core/image'
+                        ]}
+                    />
                 </div>
             </section>
         </>

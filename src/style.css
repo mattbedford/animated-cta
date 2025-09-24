@@ -13,7 +13,7 @@
     top: 50%;
     transform: translate(-50%, -50%) scaleX(0);
     transform-origin: center;
-    width: min(85vw, var(--animated-max));
+    width: min(100vw, var(--animated-max));
     height: 400px;
     background: var(--accent);
     border-radius: 2px;
@@ -135,4 +135,10 @@
     .animated-media img {
         transition: none !important;
     }
+}
+
+/* Editor preview styles - show the background statically */
+.wp-block-editor .animated-section .animated-bg {
+    transform: translate(-50%, -50%) scaleX(1) !important;
+    opacity: 1 !important;
 }
